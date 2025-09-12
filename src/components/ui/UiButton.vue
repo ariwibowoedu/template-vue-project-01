@@ -1,50 +1,39 @@
 <template>
-  <component
-    :is="to ? 'RouterLink' : 'button'"
-    :to="to"
-    :type="to ? null : type"
+  <button
+    :type="type"
     :class="[
-      'inline-block rounded-lg font-medium transition duration-300',
-      variantClasses,
-      sizeClasses,
+      baseClasses,
+      variantClasses[variant],
+      sizeClasses[size],
+      { 'opacity-50 cursor-not-allowed': disabled },
     ]"
+    :disabled="disabled"
+    @click="$emit('onClick', $event)"
   >
     <slot />
-  </component>
+  </button>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
-  variant: { type: String, default: 'primary' }, // primary | secondary | outline
-  size: { type: String, default: 'xl' }, // sm | md | lg
-  type: { type: String, default: 'button' }, // hanya dipakai kalau <button>
-  to: { type: [String, Object], default: null }, // untuk router-link
+defineProps({
+  variant: { type: String, default: 'primary' },
+  size: { type: String, default: 'md' },
+  disabled: { type: Boolean, default: false },
+  type: { type: String, default: 'button' },
 })
+const baseClasses =
+  'rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2'
 
-const variantClasses = computed(() => {
-  switch (props.variant) {
-    case 'secondary':
-      return 'bg-secondary text-light hover:bg-opacity-90'
-    case 'outline':
-      return 'border border-gray-500 text-gray-700 hover:bg-gray-100'
-    case 'primary':
-    default:
-      return 'bg-primary text-light hover:bg-opacity-90'
-  }
-})
+const variantClasses = {
+  primary: 'bg-primary text-white hover:bg-primary/30 focus:ring-primary',
+  secondary: 'bg-secondary text-white hover:bg-secondary/30 focus:ring-secondary',
+  danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+  outline: 'border border-gray-300 text-gray-800 hover:bg-gray-100 focus:ring-gray-400',
+}
 
-const sizeClasses = computed(() => {
-  switch (props.size) {
-    case 'sm':
-      return 'text-sm px-3 py-1.5'
-    case 'lg':
-      return 'text-lg px-8 py-3'
-    case 'md':
-      return 'text-md px-6 py-2'
-    default:
-      return 'text-base px-6 py-3'
-  }
-})
+const sizeClasses = {
+  sm: 'px-3 py-1 text-sm',
+  md: 'px-4 py-2 text-base',
+  lg: 'px-5 py-3 text-lg',
+}
 </script>
