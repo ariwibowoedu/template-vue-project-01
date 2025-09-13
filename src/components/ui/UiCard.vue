@@ -1,8 +1,8 @@
 <template>
   <div
     :class="[
-      'rounded-xl shadow-md p-6 bg-white transition hover:shadow-xl',
-      hoverable ? 'cursor-pointer' : '',
+      'rounded-2xl border bg-white/80 backdrop-blur-sm p-6 shadow-sm transition-all duration-300',
+      hoverable ? 'hover:shadow-lg hover:-translate-y-1 cursor-pointer' : '',
     ]"
   >
     <slot />

@@ -15,13 +15,13 @@
       v-if="type === 'password'"
       type="button"
       @click="togglePassword"
-      class="absolute top-1/2 right-2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+      class="absolute top-1/2 right-3 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-lg hover:bg-gray-100"
     >
       <span v-if="showPassword">
-        <FeatherIcon icon="eye-off" class="w-5 h-5" />
+        <FeatherIcon icon="eye-off" class="w-5 h-5 text-gray-500" />
       </span>
       <span v-else>
-        <FeatherIcon icon="eye" class="w-5 h-5" />
+        <FeatherIcon icon="eye" class="w-5 h-5 text-gray-500" />
       </span>
     </button>
   </div>
@@ -29,7 +29,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import FeatherIcon from '@/utils/FeatherIcon.vue'
+import FeatherIcon from '@/components/utils/FeatherIcon.vue'
 
 const props = defineProps({
   modelValue: String,

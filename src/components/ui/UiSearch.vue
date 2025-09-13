@@ -1,32 +1,44 @@
 <template>
   <div class="flex items-center gap-2 w-full">
-    <input
-      type="text"
-      :placeholder="placeholder"
-      v-model="localQuery"
-      class="w-full border rounded-2xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-      @input="emitSearch"
-    />
-    <button
-      v-if="localQuery"
-      @click="clearSearch"
-      class="px-3 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
-    >
-      X
-    </button>
+    <div class="relative w-full">
+      <!-- ikon search kiri -->
+      <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+        <FeatherIcon icon="search" class="w-5 h-5" />
+      </span>
+
+      <input
+        type="text"
+        :placeholder="placeholder"
+        v-model="localQuery"
+        class="w-full border rounded-2xl pl-10 pr-10 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+        @input="emitSearch"
+      />
+
+      <!-- tombol clear kanan -->
+      <button
+        v-if="localQuery"
+        @click="clearSearch"
+        type="button"
+        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition"
+      >
+        <FeatherIcon icon="x" class="w-5 h-5" />
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue'
+import FeatherIcon from '@/components/utils/FeatherIcon.vue'
+
 const props = defineProps({
   modelValue: {
     type: String,
-    defaults: '',
+    default: '',
   },
   placeholder: {
     type: String,
-    defaults: 'Search....',
+    default: 'Search...',
   },
 })
 

@@ -4,49 +4,47 @@
       <div
         v-for="toast in toasts"
         :key="toast.id"
-        class="px-4 py-2 rounded-md shadow-lg text-dark bg-white border-l-8"
+        class="px-4 py-3 rounded-lg shadow-lg bg-white border-r-8 flex items-center gap-2 min-w-[220px] max-w-xs"
         :class="
           toast.type === 'success'
-            ? 'border-green-500 text-green-500'
-            : 'border-red-500 text-red-500'
+            ? 'border-green-500 text-green-600 bg-green-100'
+            : 'border-red-500 text-red-600 bg-red-100'
         "
       >
-        <div class="flex items-center gap-2">
-          <span>{{ toast.message }}</span>
-        </div>
+        <span>{{ toast.message }}</span>
       </div>
     </transition-group>
   </div>
 </template>
 
 <script setup>
-import { useToast } from '@/composables/useToast'
+import { useToast } from '@/stores/useToast'
 const { toasts } = useToast()
 </script>
 
 <style scoped>
 .toast-enter-active,
 .toast-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .toast-enter-from {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-20px) scale(0.95);
 }
 
 .toast-enter-to {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-.toast-leve-from {
+.toast-leave-from {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .toast-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-20px) scale(0.95);
 }
 </style>
