@@ -8,3 +8,4 @@ import MainLayout from '@/components/layout/MainLayout.vue'
     <h1>About</h1>
   </main-layout>
 </template>
+

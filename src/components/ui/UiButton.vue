@@ -37,11 +37,14 @@ const baseClasses =
   'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 gap-2'
 
 const variantClasses = {
-  primary: 'bg-primary text-white hover:bg-primary/90 focus:ring-primary shadow-sm hover:shadow-md',
+  primary:
+    'bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-700 focus:ring-blue-400 shadow-sm hover:shadow-md',
   secondary:
-    'bg-secondary text-white hover:bg-secondary/90 focus:ring-secondary shadow-sm hover:shadow-md',
-  danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 shadow-sm hover:shadow-md',
-  outline: 'border border-gray-300 text-gray-800 hover:bg-gray-100 focus:ring-gray-400',
+    'bg-gradient-to-r from-purple-500 to-indigo-500 text-white hover:from-purple-600 hover:to-indigo-600 focus:ring-purple-400 shadow-sm hover:shadow-md',
+  danger:
+    'bg-gradient-to-r from-red-500 to-red-700 text-white hover:from-red-600 hover:to-red-700 focus:ring-red-500 shadow-sm hover:shadow-md',
+  outline:
+    'border border-gray-300 text-gray-800 hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 focus:ring-gray-400',
 }
 
 const spinnerColors = {
